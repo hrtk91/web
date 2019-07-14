@@ -17,6 +17,7 @@ const app = new Vue({
         ChatItem
     },
     data: {
+        intervalId: 0,
         hasLogin: false,
         input_name: '',
         username: 'ななし',
@@ -28,7 +29,7 @@ const app = new Vue({
             this.items = new Array
         },
         fetchPosts: function () {
-            fetch('./api/post')
+            return fetch('./api/post')
             .then(res => {
                 if (!res.ok) return
                 return res.json()
@@ -70,5 +71,6 @@ const app = new Vue({
     },
     created: function () {
         this.fetchPosts()
+        .then(() => this.intervalId = window.setInterval(this.fetchPosts, 5000))
     }
 });

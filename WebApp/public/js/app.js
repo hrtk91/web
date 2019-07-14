@@ -12593,6 +12593,7 @@ var app = new vue_1.default({
         ChatItem: ChatItem
     },
     data: {
+        intervalId: 0,
         hasLogin: false,
         input_name: '',
         username: 'ななし',
@@ -12605,7 +12606,7 @@ var app = new vue_1.default({
         },
         fetchPosts: function () {
             var _this = this;
-            fetch('./api/post')
+            return fetch('./api/post')
                 .then(function (res) {
                 if (!res.ok)
                     return;
@@ -12648,7 +12649,9 @@ var app = new vue_1.default({
         }
     },
     created: function () {
-        this.fetchPosts();
+        var _this = this;
+        this.fetchPosts()
+            .then(function () { return _this.intervalId = window.setInterval(_this.fetchPosts, 5000); });
     }
 });
 

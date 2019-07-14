@@ -15,7 +15,7 @@
                 <button @click="Logout()">Logout</button>
             </div>
             <div v-else>
-                <input type="text" placeholder="name" v-model:value="input_name">
+                <input type="text" placeholder="what's your name?" v-model:value="input_name">
                 <button @click="Login(input_name)">Login</button>
             </div>
         </header>
