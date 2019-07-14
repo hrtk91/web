@@ -29,8 +29,21 @@
 
  import Vue from 'vue'
 
+const ChatItem = {
+    props:['message', 'created_at'],
+    template: `
+        <div>
+            <p>{{ message }}</p>
+            <span style="font-size:0.7em">{{ created_at }}</span>
+        </div>
+        `
+}
+
 const app = new Vue({
     el: '#app',
+    components: {
+        ChatItem
+    },
     data: {
         message: '',
         items: [],

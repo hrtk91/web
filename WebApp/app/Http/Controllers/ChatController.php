@@ -19,7 +19,10 @@ class ChatController extends Controller
 
     public function createPost(Request $req)
     {
-        $post = \App\Post::create(['message' => $req->input('message')]);
+        $post = \App\Post::create([
+            'name' => $req->input('name'),
+            'message' => $req->input('message')
+        ]);
         $post->save();
         return;
     }
