@@ -1,4 +1,3 @@
-http://localhost/api/post/read
+http://localhost/api/post/read?api_token=1kb09o8WpIk15dYDtmZ9QMEkZ1DmYYYZ1FJg3WtdyInmYiI1uWF2UqaSNl1BgGn3dO6DoJI9gGDw2GlN
 Content-Type: 'application/json'
-Authorization: 'Bearer P2dNgVGrRc5Rd6FHBCvbAsgzwoZrhLZUmuZVOePMmS0eelsSwqMC1qjEEqdMtxBlM5MCQLUeT8lrpAxM'
 Accept: 'application/json'
