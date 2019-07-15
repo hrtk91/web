@@ -11,4 +11,11 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', 'ChatController@index');
+Route::get('/post', 'ChatController@read');
+Route::post('/post', 'ChatController@create');
+

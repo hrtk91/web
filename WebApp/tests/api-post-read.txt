@@ -1,0 +1,4 @@
+http://localhost/api/post/read
+Content-Type: 'application/json'
+Authorization: 'Bearer P2dNgVGrRc5Rd6FHBCvbAsgzwoZrhLZUmuZVOePMmS0eelsSwqMC1qjEEqdMtxBlM5MCQLUeT8lrpAxM'
+Accept: 'application/json'

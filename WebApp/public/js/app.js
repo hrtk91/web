@@ -12598,7 +12598,7 @@ var app = new vue_1.default({
         input_name: '',
         username: 'ななし',
         message: '',
-        items: new Array,
+        items: new Array
     },
     methods: {
         clearItems: function () {
@@ -12606,7 +12606,8 @@ var app = new vue_1.default({
         },
         fetchPosts: function () {
             var _this = this;
-            return fetch('./api/post')
+            var csrf = document.querySelector("meta[name='csrf-token']").getAttribute('content') || '';
+            return fetch('./post', { headers: { 'X-CSRF-TOKEN': csrf } })
                 .then(function (res) {
                 if (!res.ok)
                     return;
@@ -12627,11 +12628,13 @@ var app = new vue_1.default({
             var _this = this;
             if (value === '')
                 return;
+            var csrf = document.querySelector("meta[name='csrf-token']").getAttribute('content') || '';
             var data = { name: this.username, message: value };
-            fetch('./api/post', {
+            fetch('./post', {
                 method: 'post',
                 body: JSON.stringify(data),
                 headers: {
+                    'X-CSRF-TOKEN': csrf,
                     'Content-Type': 'application/json'
                 }
             })

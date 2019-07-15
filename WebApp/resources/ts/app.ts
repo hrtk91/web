@@ -1,4 +1,5 @@
- import Vue from 'vue'
+import Axios from 'axios'
+import Vue from 'vue'
 
 const ChatItem = {
     props:['name', 'message', 'created_at'],
@@ -22,14 +23,16 @@ const app = new Vue({
         input_name: '',
         username: 'ななし',
         message: '',
-        items: new Array,
+        items: new Array
     },
     methods: {
         clearItems: function () {
             this.items = new Array
         },
         fetchPosts: function () {
-            return fetch('./api/post')
+            const csrf = document.querySelector("meta[name='csrf-token']")!.getAttribute('content') || '';
+
+            return fetch('./post', { headers: { 'X-CSRF-TOKEN': csrf } })
             .then(res => {
                 if (!res.ok) return
                 return res.json()
@@ -47,12 +50,14 @@ const app = new Vue({
         },
         sendInput: function (value: string) {
             if (value === '') return
-
+            
+            const csrf = document.querySelector("meta[name='csrf-token']")!.getAttribute('content') || '';
             const data = { name: this.username, message: value }
-            fetch('./api/post', {
+            fetch('./post', {
                 method: 'post',
                 body: JSON.stringify(data),
                 headers: {
+                    'X-CSRF-TOKEN': csrf,
                     'Content-Type': 'application/json'
                 }
             })
@@ -71,6 +76,6 @@ const app = new Vue({
     },
     created: function () {
         this.fetchPosts()
-        .then(() => this.intervalId = window.setInterval(this.fetchPosts, 5000))
+            .then(() => this.intervalId = window.setInterval(this.fetchPosts, 5000))
     }
 });

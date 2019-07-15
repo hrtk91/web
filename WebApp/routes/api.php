@@ -12,10 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['middleware' => ['auth:api']], function(){
+    Route::resource('post', 'Api\ChatApiController', ['only' => ['create']]);
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/post', 'ChatController@readPosts');
-Route::post('/post', 'ChatController@createPost');
+// Route::middleware('auth:api')->post('/post/create', 'Api\ChatApiController@create');
+Route::middleware('auth:api')->get('/post/read', 'Api\ChatApiController@read');
