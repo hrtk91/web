@@ -15,11 +15,11 @@
                 <button @click="Logout()">Logout</button>
             </div>
             <div v-else>
-                <input type="text" placeholder="what's your name?" v-model:value="input_name">
-                <button @click="Login(input_name)">Login</button>
+                <button @click="Login()">Login</button>
             </div>
         </header>
         <main>
+            <channel-navigation v-on:add-channel="addChannel($event)" v-bind:channels="channels" v-on:choose-channel="chooseChannel($event)" v-on:delete-channel="deleteChannel($event)"></channel-navigation>
             <article>
                 <input type="text" v-model="message" @keyup.enter="sendInput(message)" placeholder="Enter your message...">
                 <button @click="sendInput(message)">send</button>

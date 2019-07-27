@@ -16,6 +16,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'ChatController@index');
-Route::get('/post', 'ChatController@read');
+Route::get('/post/{id}', 'ChatController@read');
 Route::post('/post', 'ChatController@create');
-
+Route::get('/user', 'ChatController@user');
+Route::get('/channels', 'ChatController@channels');
+Route::post('/channels', 'ChatController@addChannel');
+Route::delete('/channels/{id}', 'ChatController@deleteChannel');

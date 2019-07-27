@@ -5,9 +5,17 @@ body {
 }
 
 button {
-    border: 1px solid hsla(200, 75%, 50%);
-    background-color: hsla(0, 100%, 100%);
+    border: 1px solid hsl(200, 75%, 50%);
+    background-color: hsl(0, 100%, 100%);
     padding: 0.5em 2em;
+}
+input[type="radio"] {
+    display:none;
+}
+.selectedChannel {
+    font-weight: 700;
+    color: hsl(80, 90%, 40%);
+    border-bottom: 1px solid hsla(200, 75%, 50%);
 }
 
 header {
@@ -29,11 +37,25 @@ header button {
 main {
     margin-top: 0.2em;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
+    /* flex-direction: column;
+    align-items: center; */
 }
 
-main article {
+main > nav {
+    width: 30%;
+    margin-left: 1em;
+}
+
+main > nav > h4 {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: 0;
+}
+
+main > article {
+    width: 70%;
 }
 
 main article input[type="text"] {
@@ -47,3 +69,4 @@ main article input[type="text"] {
 .chat-item p {
     margin-left: 1em;
 }
+

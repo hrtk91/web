@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['name', 'message'];
+    protected $fillable = ['name', 'message', 'channelId'];
     protected $table = 'posts';
 }
